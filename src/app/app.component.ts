@@ -5,13 +5,14 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { fontAwesomeIcons } from './shared/font-awesome-icons';
 import { NavigationComponent } from "./layout/navigation/navigation.component";
 import { LibraryCardComponent } from "./layout/library/library-card/library-card.component";
+import { HeaderComponent } from "./layout/header/header.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [CommonModule, RouterOutlet, FontAwesomeModule, NavigationComponent, LibraryCardComponent]
+    imports: [CommonModule, RouterOutlet, FontAwesomeModule, NavigationComponent, LibraryCardComponent, HeaderComponent]
 })
 export class AppComponent implements OnInit{
   public title: string = 'spotify-clone-front';

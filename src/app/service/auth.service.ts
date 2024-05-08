@@ -43,7 +43,6 @@ export class AuthService {
   }
 
   logout(): void {
-    console.log('logout');
     this.http.post(`${environment.API_URL}/api/logout`, {}, {withCredentials: true})
       .subscribe({
         next: (response: any) => {

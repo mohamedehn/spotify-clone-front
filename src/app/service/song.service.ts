@@ -12,7 +12,7 @@ export class SongService {
   http = inject(HttpClient);
   private add$: WritableSignal<State<SaveSong, HttpErrorResponse>> =
     signal(State.Builder<SaveSong, HttpErrorResponse>().forInit().build());
-  addSig = computed(() => this.add$);
+  addSig = computed(() => this.add$());
 
   add(song: SaveSong): void {
     const formData = new FormData();

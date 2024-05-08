@@ -1,20 +1,20 @@
 export interface TitleVO {
-  value?: string;
+  value?: String;
 }
 
 export interface AuthorVO {
-  value?: string;
+  value?: String;
 }
 
 export interface SongBase {
-  publicId?: string;
+  publicId?: String;
   title?: TitleVO;
   author?: AuthorVO;
 }
 
 export interface SaveSong extends SongBase {
   file?: File;
-  fileContentType?: string;
+  fileContentType?: String;
   cover?: File;
-  coverContentType?: string;
+  coverContentType?: String;
 }

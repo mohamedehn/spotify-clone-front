@@ -7,14 +7,21 @@ export interface AuthorVO {
 }
 
 export interface SongBase {
-  publicId?: String;
+  publicId?: string;
   title?: TitleVO;
   author?: AuthorVO;
 }
 
 export interface SaveSong extends SongBase {
   file?: File;
-  fileContentType?: String;
+  fileContentType?: string;
   cover?: File;
-  coverContentType?: String;
+  coverContentType?: string;
+}
+
+export interface ReadSong extends SongBase{
+  cover?: string;
+  coverContentType?: string;
+  favorite?: boolean;
+  displayPlay?: boolean;
 }

@@ -9,13 +9,14 @@ import { HeaderComponent } from "./layout/header/header.component";
 import { ToastService } from './service/toast.service';
 import { NgbToast } from '@ng-bootstrap/ng-bootstrap';
 import { ToastInfo } from './service/model/toast-info.model';
+import { PlayerComponent } from './layout/player/player.component';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [CommonModule, RouterOutlet, FontAwesomeModule, NavigationComponent, LibraryCardComponent, HeaderComponent, NgbToast]
+    imports: [CommonModule, RouterOutlet, FontAwesomeModule, NavigationComponent, LibraryCardComponent, HeaderComponent, NgbToast, PlayerComponent]
 })
 export class AppComponent implements OnInit{
   public title: string = 'spotify-clone-front';

@@ -19,7 +19,7 @@ export class AuthService {
     signal(State.Builder<User, HttpErrorResponse>().forSuccess({ email: this.notConnected }).build());
   fetchUser: Signal<State<User, HttpErrorResponse>> = computed(() => this.fetchUser$());
   private triggerAuthPopup$: WritableSignal<AuthPopupState> = signal("CLOSE");
-  authPopupStateChange: Signal<AuthPopupState> = computed(() => this.authPopupStateChange());
+  authPopupStateChange: Signal<AuthPopupState> = computed(() => this.triggerAuthPopup$());
 
   fetch(): void {
     this.http.get<User>(`${environment.API_URL}/api/get-authenticated-user`)

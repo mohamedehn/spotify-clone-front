@@ -43,26 +43,31 @@ export class AppComponent implements OnInit {
     this.faIconLibrary.addIcons(...fontAwesomeIcons);
   }
 
-  private openOrCloseAuthModal(state: AuthPopupState): void {
+  private openOrCloseAuthModal(state: AuthPopupState) {
     if (state === "OPEN") {
-      this.openAuthPopup()
-    } else if (this.authModalRef !== null && state === 'CLOSE' && this.modalService.hasOpenModals()) {
+      this.openAuthPopup();
+    } else if (this.authModalRef !== null && state === "CLOSE"
+      && this.modalService.hasOpenModals()) {
       this.authModalRef.close();
     }
   }
 
-  private openAuthPopup(): void {
-    this.authModalRef = this.modalService.open(AuthPopupComponent, { ariaDescribedBy: 'authentification-modal', centered: true });
+  private openAuthPopup() {
+    this.authModalRef = this.modalService.open(AuthPopupComponent, {
+      ariaDescribedBy: 'authentication-modal',
+      centered: true
+    });
+
     this.authModalRef.dismissed.subscribe({
       next: () => {
         this.authService.openOrCloseAuthPopup("CLOSE");
       }
     });
+
     this.authModalRef.closed.subscribe({
       next: () => {
         this.authService.openOrCloseAuthPopup("CLOSE");
       }
-    })
+    });
   }
-
 }

@@ -14,7 +14,7 @@ export class SongContentService {
   queueToPlay: Signal<ReadSong[]> = computed(() => this.queueToPlay$());
   private play$: WritableSignal<State<SongContent, HttpErrorResponse>>
     = signal(State.Builder<SongContent, HttpErrorResponse>().forInit().build());
-  play: Signal<State<SongContent, HttpErrorResponse>> = computed(() => this.play$());
+  playNewSong: Signal<State<SongContent, HttpErrorResponse>> = computed(() => this.play$());
 
   constructor() { }
 

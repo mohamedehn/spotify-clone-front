@@ -4,6 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SmallSongCardComponent } from '../../../shared/small-song-card/small-song-card.component';
 import { SongService } from '../../../service/song.service';
 import { ReadSong } from '../../../service/model/song.model';
+import { SongContentService } from '../../../service/song-content.service';
 
 @Component({
   selector: 'app-library-card',
@@ -16,6 +17,7 @@ export class LibraryCardComponent implements OnInit {
 
   private songService = inject(SongService);
   public songs: Array<ReadSong> = [];
+  private songContentService = inject(SongContentService);
 
   constructor() {
     effect(() => {
@@ -31,6 +33,10 @@ export class LibraryCardComponent implements OnInit {
 
   private fetchSongs(): void {
     this.songService.getAll();
+  }
+
+  onPlaySong(songToPlayFirst: ReadSong): void {
+    this.songContentService.createNewQueue(songToPlayFirst, this.songs!);
   }
 
 }

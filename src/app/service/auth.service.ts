@@ -1,9 +1,11 @@
 import { HttpClient, HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
-import { Injectable, WritableSignal, computed, inject, signal } from '@angular/core';
+import { Injectable, Signal, WritableSignal, computed, inject, signal } from '@angular/core';
 import { State } from './model/state.model';
 import { User } from './model/user.model';
 import { environment } from '../../environments/environment';
 import { Location } from '@angular/common';
+
+export type AuthPopupState = "OPEN" | "CLOSE";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,10 @@ export class AuthService {
   notConnected: string = 'NOT_CONNECTED';
   private fetchUser$: WritableSignal<State<User, HttpErrorResponse>> =
     signal(State.Builder<User, HttpErrorResponse>().forSuccess({ email: this.notConnected }).build());
-  fetchUser = computed(() => this.fetchUser$());
+  fetchUser: Signal<State<User, HttpErrorResponse>> = computed(() => this.fetchUser$());
+  private triggerAuthPopup$: WritableSignal<AuthPopupState> = signal("CLOSE");
+  authPopupStateChange: Signal<AuthPopupState> = computed(() => this.authPopupStateChange());
+
   fetch(): void {
     this.http.get<User>(`${environment.API_URL}/api/get-authenticated-user`)
       .subscribe({
@@ -50,6 +55,10 @@ export class AuthService {
           location.href = response.logoutUrl
         }
       })
+  }
+
+  openOrCloseAuthPopup(state: AuthPopupState): void {
+    this.triggerAuthPopup$.set(state);
   }
 
   constructor() { }

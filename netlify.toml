@@ -1,4 +1,11 @@
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  from = "/oauth2/authorization/okta"
+  to = "https://spotify-clone-back-5n19.onrender.com/oauth2/authorization/okta"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/login/oauth2/code/okta"
+  to = "https://spotify-clone-back-5n19.onrender.com/login/oauth2/code/okta"
+  status = 302
+  force = true

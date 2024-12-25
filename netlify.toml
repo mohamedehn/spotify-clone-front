@@ -9,3 +9,15 @@
   to = "https://spotify-clone-back-5n19.onrender.com/login/oauth2/code/okta"
   status = 302
   force = true
+
+[[redirects]]
+  from = "/login/oauth2/code/okta"
+  to = "https://spotifyclonejava.netlify.app/login/oauth2/code/okta"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/callback"
+  to = "/callback"
+  status = 200
+  force = false
